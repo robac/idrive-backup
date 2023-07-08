@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM arm64v8/ubuntu:22.04
 
 # Install packages
 RUN apt-get update && apt-get -y install vim unzip curl libfile-spec-native-perl
@@ -7,16 +7,15 @@ RUN cpan install common::sense
 RUN cpan install Linux::Inotify2
 
 # Timezone (no prompt)
-ARG TZ "Europe/Vienna"
+ARG TZ "Europe/Prague"
 ENV tz=$TZ
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 RUN echo "$tz" > /etc/timezone
 RUN rm -f /etc/localtime
 RUN dpkg-reconfigure -f noninteractive tzdata
 
+RUN mkdir /work
 WORKDIR /work
-
-# Copy entrypoint script
 COPY entrypoint.sh .
 RUN chmod a+x entrypoint.sh
 
