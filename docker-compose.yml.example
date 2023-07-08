@@ -1,6 +1,7 @@
 services:
   idrive:
     container_name: idrive-backup
+    image: robac/idrive-backup
     build: ./
     restart: unless-stopped
     volumes:
