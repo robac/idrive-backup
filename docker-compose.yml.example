@@ -12,6 +12,6 @@ services:
       - TZ=$TZ
 
 volumes:
-  config:
-  dependencies:
-  files:
+  idrive_config:
+  idrive_dependencies:
+  idrive_files:
