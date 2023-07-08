@@ -1,0 +1,17 @@
+services:
+  idrive:
+    container_name: idrive-backup
+    build: ./
+    restart: unless-stopped
+    volumes:
+      - idrive_config:/work/IDriveForLinux/idriveIt
+      - idrive_dependencies:/work/IDriveForLinux/scripts/Idrivelib/dependencies
+      - idrive_files:/mnt/files
+      - $BACKUPDIR:/mnt/backup:ro
+    environment:
+      - TZ=$TZ
+
+volumes:
+  config:
+  dependencies:
+  files:
