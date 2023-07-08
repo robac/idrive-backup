@@ -1,7 +1,3 @@
-#!/bin/sh
-# Entrypoint for idrive
-
+#!/usr/bin/sh
 service idrivecron start
-
-# Keep container up
 tail -f /dev/null
